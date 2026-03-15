@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alexandru Pitea — Digital Product Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=VT323&family=Chivo+Mono:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    ::selection {
+      background-color: #F79B00;
+      color: #0F1618;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --yellow: #F79B00;
+      --bg: #0F1618;
+      --font-display: 'VT323', monospace;
+      --font-mono: 'Chivo Mono', monospace;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--yellow);
+      font-family: var(--font-mono);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .layout {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(16px, 3vw, 40px);
+    }
+
+    /* ── TOP SECTION ── */
+    .top {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .date {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      margin-bottom: clamp(15px, 3vw, 35px);
+    }
+
+    .hero-name,
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 64px;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--yellow);
+    }
+
+    .hero-title {
+      margin-bottom: clamp(20px, 3vw, 44px);
+    }
+
+    .taglines {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .taglines a,
+    .taglines p {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--yellow);
+    }
+
+    .taglines a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    a:visited {
+      color: var(--yellow);
+    }
+
+    /* ── BOTTOM SECTION ── */
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .email a {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--yellow);
+    }
+
+    .email a:visited {
+      color: var(--yellow);
+    }
+
+    .email a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── LOGO MARK ── */
+    .logo-mark {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .logo-mark svg {
+      width: 36px;
+      height: 36px;
+    }
+
+    /* ── SCANLINE OVERLAY ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.03) 2px,
+        rgba(0,0,0,0.03) 4px
+      );
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    /* ── NOISE CANVAS ── */
+    #noise {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 99;
+      opacity: 0.05;
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <div class="top">
+      <p class="date" id="current-date"></p>
+      <h1 class="hero-name">Alexandru Pitea</h1>
+      <h2 class="hero-title">Digital Product Design</h2>
+      <div class="taglines">
+        <p>Design Screener at <a href="https://toptal.com" target="_blank" rel="noopener">Toptal.com</a></p>
+        <p>Currently building <a href="https://primeshot.com" target="_blank" rel="noopener">Primeshot.com</a></p>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div class="email">
+        <a href="mailto:alexandrupitea@gmail.com">ALEXANDRUPITEA@GMAIL.COM</a>
+      </div>
+      <div class="logo-mark" aria-label="Alexandru Pitea logo">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 0C33.1046 0 34 0.895431 34 2V32C34 33.1046 33.1046 34 32 34H2C0.895431 34 4.02667e-09 33.1046 0 32V2C0 0.895431 0.895431 4.0266e-09 2 0H32ZM8.44727 17.5908C8.0233 18.0731 6.92067 20.2313 6.5498 20.874C5.75086 22.2776 4.93906 23.6735 4.18359 25.1025C3.95427 25.5364 3.82954 26.0823 4.49609 26.1143C7.10775 26.2392 9.79033 26.0384 12.4004 26.1689C12.5028 26.1684 12.705 26.161 12.7969 26.1816C12.9191 26.1706 13.0162 26.1779 13.1064 26.1006C13.1644 25.7688 10.9714 22.12 10.6592 21.542C9.9742 20.2738 9.1728 18.8457 8.44727 17.5908ZM10.7139 9.03418C9.19656 9.02374 7.48113 8.99342 5.97168 9.04297C5.77454 9.14047 5.57142 9.2387 5.58008 9.4873C5.58791 9.712 5.87283 10.2689 5.97754 10.4561C6.54469 11.4696 7.12127 12.4745 7.69043 13.4854L11.4365 20.1465C12.1837 21.4889 12.9372 22.828 13.6982 24.1621C13.9877 24.6741 14.5127 25.6845 14.8281 26.126C16.4982 26.1925 18.2834 26.1408 19.9766 26.168C20.1585 26.1578 20.1446 26.1861 20.2754 26.0947C20.3892 25.8177 19.8753 25.1486 19.7236 24.873L17.8623 21.5635L13.5 13.8066C12.6618 12.3179 11.8443 10.8157 11.0039 9.32812C10.9313 9.19962 10.8306 9.11837 10.7139 9.03418ZM17.9346 9.10547C17.6981 8.92817 13.1093 9.02839 12.4668 9.02734C12.6798 9.6669 13.5671 11.164 13.9346 11.8145L16.752 16.791L20.3389 23.2021L21.3408 24.9932C21.5413 25.3524 21.7696 25.8105 22.0137 26.127C23.5027 26.1778 25.0504 26.1568 26.5439 26.1475C26.7095 26.1465 26.961 26.07 27.1104 25.9971C27.472 25.4876 26.4954 24.1553 26.2217 23.6602L23.1797 18.2568L20.5527 13.5654C19.8237 12.2502 19.1058 10.91 18.334 9.62109C18.2302 9.44775 18.0947 9.22566 17.9346 9.10547ZM22.6494 9.02539L19.6396 9.02832C19.7598 9.4338 20.5535 10.8039 20.7822 11.2051L22.2295 13.7695C22.577 14.3834 24.9287 18.7605 25.2158 18.9727C25.8566 19.0896 27.3001 18.0691 27.7725 17.5938C29.7263 15.4966 29.6895 12.4114 27.625 10.376C26.1681 8.93983 24.5256 9.02395 22.6494 9.02539Z" fill="#F79B00"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="noise"></canvas>
+
+  <script>
+    // Render current date in "MMM DD, YYYY" format
+    const date = new Date();
+    const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+    const formatted = `${months[date.getMonth()]} ${String(date.getDate()).padStart(2,'0')}, ${date.getFullYear()}`;
+    document.getElementById('current-date').textContent = formatted;
+
+    // Animated noise
+    const canvas = document.getElementById('noise');
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+      canvas.style.width  = '';
+      canvas.style.height = '';
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    let lastTime = 0;
+    const fps = 20;
+    const interval = 1000 / fps;
+
+    function drawNoise(timestamp) {
+      if (timestamp - lastTime >= interval) {
+        lastTime = timestamp;
+        const w = canvas.width;
+        const h = canvas.height;
+        const imageData = ctx.createImageData(w, h);
+        const buf = imageData.data;
+        for (let i = 0; i < buf.length; i += 4) {
+          const v = (Math.random() * 255) | 0;
+          buf[i]     = v;
+          buf[i + 1] = v;
+          buf[i + 2] = v;
+          buf[i + 3] = 255;
+        }
+        ctx.putImageData(imageData, 0, 0);
+      }
+      requestAnimationFrame(drawNoise);
+    }
+    drawNoise(0);
+  </script>
+</body>
+</html>
